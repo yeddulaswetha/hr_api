@@ -16,7 +16,7 @@ pipeline {
         stage('tomcat dev') {
             steps {
                 sshagent(['sshkey']) {
-                    sh "scp -o StrictHostKeyChecking=no target/hr-api.war ec2-user@44.193.211.179 /opt/tomcat9/webapps/"
+                    sh "scp -o StrictHostKeyChecking=no target/hr-api.war ec2-user@44.193.211.179:/opt/tomcat9/webapps/"
                     sh "ssh ec2-user@44.193.211.179 /opt/tomcat9/bin/shutdown.sh"
                     sh "ssh ec2-user@44.193.211.179 /opt/tomcat9/bin/startup.sh"
                 }
